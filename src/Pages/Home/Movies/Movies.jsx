@@ -1,11 +1,10 @@
 import { Rating } from '@smastrom/react-rating'
 
 import '@smastrom/react-rating/style.css'
+import { Link } from 'react-router-dom';
 
 const Movies = ({ movie }) => {
-    const { image, language, name, genres, premiered, rating, schedule } = movie
-
-    console.log(movie)
+    const {id, image, language, name, genres, premiered, rating, schedule } = movie
     return (
         <div className="card w-96 rounded-none bg-base-100 shadow-xl mx-auto">
             <figure><img className="rounded-3xl w-11/12" src={image.medium} alt="Shoes" /></figure>
@@ -21,9 +20,9 @@ const Movies = ({ movie }) => {
                         />
                     </div>
                 </div>
-                <div className="flex justify-between mt-8">
+                <div className="flex items-center justify-between mt-8">
                     <div>
-                        <h3><span className='font-medium'>Premiered:</span> {premiered}</h3>
+                        <h3>{premiered}</h3>
                     </div>
                     <div className='flex gap-1'>
                         <p>{schedule.days},</p>
@@ -42,7 +41,7 @@ const Movies = ({ movie }) => {
                     </p>
                 </div>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Buy Now</button>
+                    <Link to={`/movies/${id}`}><button className="btn btn-primary">View Details</button></Link>
                 </div>
             </div>
         </div>
