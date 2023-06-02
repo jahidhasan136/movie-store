@@ -1,13 +1,14 @@
 import { Rating } from "@smastrom/react-rating";
 import { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const MovieDetails = () => {
     const movieData = useLoaderData()
     const { id } = useParams()
     const [movies, setMovies] = useState({})
     console.log(movies)
-    const { name, image, genres, premiered, language, rating, ended, schedule, status, summary, type, } = movies
+    const { name, image, genres, premiered, language, rating, ended, schedule, status, summary } = movies
 
     const paragraphs = summary?.split('</p>').filter(Boolean).map((paragraph, index) => (
         <p key={index}>{paragraph.replace(/<[^>]+>/g, '')}</p>
@@ -45,6 +46,16 @@ const MovieDetails = () => {
         // Store the form data in local storage
         localStorage.setItem('formData', JSON.stringify(formDataArray));
     };
+
+    const handleSweet = () => {
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Ticket Confirmed',
+            showConfirmButton: false,
+            timer: 1500
+          })
+    }
 
 
     return (
@@ -93,7 +104,7 @@ const MovieDetails = () => {
                                 </div>
                                 <div>
                                     <p className="w-11/12 text-justify mb-5">{paragraphs}</p>
-                                    <button className="btn rounded-md">{status}</button>
+                                    <button className="btn rounded-md text-red-500">{status}</button>
                                 </div>
                             </div>
                         </div>
@@ -105,7 +116,7 @@ const MovieDetails = () => {
                             <input type="date" name="date" className="text-black input input-bordered w-full max-w-xs" />
                         </div>
                         <input type="text" name="intro" placeholder="Type here" className="input input-bordered w-full max-w-xs flex justify-center mx-auto  text-black" />
-                        <input className="btn rounded-full mx-auto flex justify-center" type="submit" value="Get Ticket" />
+                        <input onClick={handleSweet} className="btn btn-outline border-red-500 text-white hover:bg-red-500 rounded-full mx-auto flex justify-center" type="submit" value="Get Ticket" />
                     </form>
                 </div>
             </div>

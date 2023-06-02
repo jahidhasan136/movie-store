@@ -41,7 +41,7 @@ const Movies = ({ movie }) => {
                     </p>
                 </div>
                 <div className="card-actions justify-end">
-                    <Link to={`/movies/${id}`}><button className="btn btn-primary">View Details</button></Link>
+                    <Link to={`/movies/${id}`}><button className="btn btn-outline border-red-500 hover:border-red-500 hover:bg-red-500">View Details</button></Link>
                 </div>
             </div>
         </div>
