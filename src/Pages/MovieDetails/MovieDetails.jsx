@@ -51,7 +51,7 @@ const MovieDetails = () => {
         Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Ticket Confirmed',
+            title: 'Booked Ticket',
             showConfirmButton: false,
             timer: 1500
           })
