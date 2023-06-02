@@ -3,7 +3,7 @@ import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 
 const Movies = ({ movie }) => {
-    const { id, image, language, name, type, genres, premiered, rating, ended } = movie
+    const { image, language, name, genres, premiered, rating, schedule } = movie
 
     console.log(movie)
     return (
@@ -22,19 +22,24 @@ const Movies = ({ movie }) => {
                     </div>
                 </div>
                 <div className="flex justify-between mt-8">
-                    <div className="space-y-2">
-                        <p><span className="font-medium">Languages:</span> {language}</p>
-                        <p> <span className="mr-1 font-medium">Genres:</span>
-                            <>
-                                {genres[0]},
-                                {genres[1]}
-                            </>
-                        </p>
-                    </div>
                     <div>
-                        <h3>{premiered}</h3>
-                        <h3>{ended}</h3>
+                        <h3><span className='font-medium'>Premiered:</span> {premiered}</h3>
                     </div>
+                    <div className='flex gap-1'>
+                        <p>{schedule.days},</p>
+                        <p>{schedule.time}</p>
+                    </div>
+                </div>
+                <div className="space-y-2 mt-3">
+                    <p><span className="font-medium">Languages:</span> {language}</p>
+                    <p> <span className="mr-1 font-medium">Genres:</span>
+                        <>
+                            {genres[0]}
+                            {
+                                genres[1] ? <>,{genres[1]}</> : <></>
+                            }
+                        </>
+                    </p>
                 </div>
                 <div className="card-actions justify-end">
                     <button className="btn btn-primary">Buy Now</button>
