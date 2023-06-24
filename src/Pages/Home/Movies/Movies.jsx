@@ -7,10 +7,10 @@ const Movies = ({ movie }) => {
     const {id, image, language, name, genres, premiered, rating, schedule } = movie
     return (
         <div className="card w-96 rounded-none bg-base-100 shadow-xl mx-auto">
-            <figure><img className="rounded-3xl w-11/12" src={image.medium} alt="Shoes" /></figure>
+            <figure><img className="rounded-3xl w-11/12" src={image?.medium} alt="Shoes" /></figure>
             <div className="card-body">
                 <div className="">
-                    <img className="w-24 h-36 -m-20 ml-2" src={image.medium} alt="" />
+                    <img className="w-24 h-36 -m-20 ml-2" src={image?.medium} alt="" />
                     <div>
                         <h2 className="card-title text-3xl ml-36 mb-3">{name}</h2>
                         <Rating
